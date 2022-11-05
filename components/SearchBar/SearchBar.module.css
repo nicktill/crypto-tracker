@@ -1,0 +1,21 @@
+.coin {
+  width: 300px;
+  margin-bottom: 64px;
+  display: flex;
+  align-items: center;
+}
+
+.coin_input {
+  background: #222531;
+  color: #fff;
+  border: none;
+  padding: 16px;
+  border-radius: 4px;
+  outline: none;
+  height: 100%;
+  width: 100%;
+}
+
+.coin_input::placeholder {
+  color: #e2e2e2;
+}

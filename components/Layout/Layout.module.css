@@ -1,0 +1,14 @@
+.layout {
+  height: 100%;
+  width: 100%;
+  color: #fff;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+}
+.coin_logo {
+  height: 200px;
+  width: 200px;
+}
