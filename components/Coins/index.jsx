@@ -25,18 +25,19 @@ const Coins = ({
               <p className={styles.coin_price}>${price}</p>
               <p className={styles.coin_volume}>${volume.toLocaleString()}</p>
               {priceChange < 0 ? (
+                // if its negative show in red
                 <p className={(styles.coin_percent, styles.red)}>
                   {priceChange.toFixed(2)}%
                 </p>
               ) : (
+                // otherwise its negative show in red
                 <p className={(styles.coin_percent, styles.green)}>
                   {priceChange.toFixed(2)}%
                 </p>
               )}
               <p className={styles.coin_marketcap}>
-                Mkt Cap: {marketcap.toLocaleString()}%
+              Mkt Cap: {marketcap.toLocaleString()}%
               </p>
-              >
             </div>
           </div>
         </div>
