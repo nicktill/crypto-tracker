@@ -10,7 +10,8 @@
   "dependencies": {
     "next": "latest",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "yarn": "^1.22.19"
   },
   "license": "MIT",
   "keywords": [],
