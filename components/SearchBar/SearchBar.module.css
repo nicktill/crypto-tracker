@@ -1,6 +1,6 @@
 .coin {
   width: 300px;
-  margin-bottom: 64px;
+  margin-bottom: 0.1rem;
   display: flex;
   align-items: center;
 }
