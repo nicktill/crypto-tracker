@@ -18,6 +18,7 @@ export default function Home() {
           id="filter"
           className={styles.filterMenuSelect}
           onChange={handleFilterChange}
+          value={filter}
         >
           <option value="name">name</option>
           <option value="market_cap">market cap</option>
@@ -31,6 +32,7 @@ export default function Home() {
           id="order"
           className={styles.filterMenuSelect}
           onChange={handleOrderChange}
+          value={order}
         >
           <option value="asc">ascending</option>
           <option value="desc">descending</option>
