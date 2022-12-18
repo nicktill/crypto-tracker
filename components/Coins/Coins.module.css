@@ -68,8 +68,11 @@
 }
 
 .coin_volume {
-  width: 155px;
+  width: 0%;
   color: #ffffff;
+  margin-right: 15%;
+  margin-left: 15%;
+  padding-right: 10%;
 }
 
 .coin_marketcap {

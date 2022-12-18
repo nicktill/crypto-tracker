@@ -1,6 +1,27 @@
 import styles from "./Coins.module.css";
 import Link from "next/link";
 
+function formatNumber(number) {
+  if (number >= 1000000000) {
+    return (number / 1000000000).toFixed(1).replace(/\.0$/, "") + "B";
+  } else if (number >= 1000000) {
+    return (number / 1000000).toFixed(1).replace(/\.0$/, "") + "M";
+  } else if (number >= 1000) {
+    return (number / 1000).toFixed(1).replace(/\.0$/, "") + "K";
+  } else {
+    return number.toString();
+  }
+}
+
+function formatString(string) {
+  const index = string.indexOf(" ");
+  if (index !== -1) {
+    return string.substring(0, index);
+  } else {
+    return string;
+  }
+}
+
 const Coins = ({
   name,
   price,
@@ -20,12 +41,12 @@ const Coins = ({
               <div className={styles.coin}>
                 <img className={styles.coin_img} src={image} alt={name} />
                 <div className={styles.coin_text}>
-                  <h1 className={styles.coin_heading}>{name}</h1>
+                  <h1 className={styles.coin_heading}>{formatString(name)}</h1>
                 </div>
               </div>
               <div className={styles.coin_data}>
-                <p className={styles.coin_price}>${price}</p>
-                <p className={styles.coin_volume}>${volume.toLocaleString()}</p>
+                <p className={styles.coin_price}>${price.toFixed(2)}</p>
+                <p className={styles.coin_volume}>${formatNumber(volume)}</p>
                 {priceChange < 0 ? (
                   // if its negative show in red
                   <p className={(styles.coin_percent, styles.red)}>
@@ -38,7 +59,7 @@ const Coins = ({
                   </p>
                 )}
                 <p className={styles.coin_marketcap}>
-                  Mkt Cap: {marketcap.toLocaleString()}
+                  Mkt Cap: {formatNumber(marketcap)}
                 </p>
                 <br />
               </div>
