@@ -38,7 +38,7 @@ const Coins = ({
                   </p>
                 )}
                 <p className={styles.coin_marketcap}>
-                  Mkt Cap: {marketcap.toLocaleString()}%
+                  Mkt Cap: {marketcap.toLocaleString()}
                 </p>
                 <br />
               </div>
