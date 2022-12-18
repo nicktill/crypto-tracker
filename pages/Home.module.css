@@ -12,7 +12,7 @@
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  margin-right: 2%;
+  margin-right: 1.5rem;
 }
 
 .filterMenuLabel {
@@ -31,4 +31,11 @@
 .filterMenuSelect:focus {
   outline: none;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+@media screen and (max-width: 768px) {
+  .coin_app {
+    align-content: center;
+    margin-left: 4.5rem;
+  }
 }
