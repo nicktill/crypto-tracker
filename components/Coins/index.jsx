@@ -12,7 +12,7 @@ const Coins = ({
   id,
 }) => {
   return (
-    <div>
+    <div className={styles.coin_section}>
       <Link href={`/coin/${id}`}>
         <a className={styles.coin_link}>
           <div className={styles.coin_container}>
