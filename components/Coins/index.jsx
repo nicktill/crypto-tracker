@@ -12,7 +12,7 @@ const Coins = ({
   id,
 }) => {
   return (
-    <div className={styles.coin_section}>
+    <div>
       <Link href={`/coin/${id}`}>
         <a className={styles.coin_link}>
           <div className={styles.coin_container}>
@@ -29,12 +29,12 @@ const Coins = ({
                 {priceChange < 0 ? (
                   // if its negative show in red
                   <p className={(styles.coin_percent, styles.red)}>
-                    {priceChange.toFixed(2)}%
+                    {Number(priceChange).toFixed(2)}%
                   </p>
                 ) : (
                   // otherwise its negative show in red
                   <p className={(styles.coin_percent, styles.green)}>
-                    {priceChange.toFixed(2)}%
+                    +{Number(priceChange).toFixed(2)}%
                   </p>
                 )}
                 <p className={styles.coin_marketcap}>
