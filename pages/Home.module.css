@@ -81,7 +81,7 @@
 
 .coinGroupLabel {
   font-size: 1rem;
-  font-weight: 40;
+  font-weight: bold;
   padding-right: 100px;
   display: flex;
 }
