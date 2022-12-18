@@ -105,18 +105,18 @@
     /* Make the row more flexible by using percentage-based widths */
     width: 100%;
   }
-
   .coin {
-    /* Use the flex layout to rearrange the elements in the coin element */
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
+    padding-right: 24px;
+    /* add padding to the left of the element */
+    padding-left: 10px;
   }
+
   .coin_heading {
     /* Increase the font size and line height for better readability on mobile devices */
     font-size: 18px;
     line-height: 1.5;
-    margin-left: 40%;
   }
 
   .coin_img {

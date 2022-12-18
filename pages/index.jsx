@@ -86,6 +86,16 @@ export default function Home() {
         <h1 className="p-0 ">Crypto Tracker</h1>
         <SearchBar type="text" placeholder="Search" onChange={handleChange} />
         <FilterMenu />
+        <div className={styles.coinGroupLabels}>
+          <div className={styles.coinGroupInner}>
+            <div className={styles.coinGroupLabel}>Currency</div>
+            <div className={styles.coinGroupLabel}></div>
+            <div className={styles.coinGroupLabel}>Price</div>
+          </div>
+          <div className={styles.coinGroupLabel}>Volume</div>
+          <div className={styles.coinGroupLabel}>Change</div>
+          <div className={styles.coinGroupLabel}>Market Cap</div>
+        </div>
         <CoinList coins={sortedCoins} />
       </div>
     </Layout>

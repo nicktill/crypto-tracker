@@ -39,3 +39,66 @@
     margin-left: 4.5rem;
   }
 }
+
+.coinCard {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding: 20px 10px;
+  flex-direction: row;
+}
+
+.coinCardLeft {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.coinCardRight {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.coinCardText {
+  margin-left: 20px;
+}
+
+.coinCardPrice,
+.coinCardMarketCap,
+.coinCardChange {
+  text-align: right;
+}
+
+.coinGroupLabels {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 15px;
+}
+
+.coinGroupLabel {
+  font-size: 1rem;
+  font-weight: 40;
+  padding-right: 100px;
+  display: flex;
+}
+
+.coinGroupInner {
+  font-size: 1rem;
+  font-weight: 40;
+  padding-left: 40px;
+  padding-right: 50px;
+  display: flex;
+  flex-direction: row;
+  margin-left: 25px;
+  margin-right: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .coinGroupLabel {
+    display: None;
+  }
+}
