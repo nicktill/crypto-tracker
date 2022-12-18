@@ -81,7 +81,7 @@
   width: 100px;
   color: #ffffff;
   /* bold the font */
-  font-weight: 600;
+  font-weight: bold;
 }
 
 .red {
@@ -92,8 +92,12 @@
   color: #43dfa4;
 }
 
-/* Add a media query to apply different styles when the screen width is below 700px */
 @media only screen and (max-width: 950px) {
+  .coin_volume,
+  .coin_marketcap {
+    display: none;
+    margin-top: 20px;
+  }
   .coin_row {
     /* Make the row more flexible by using percentage-based widths */
     width: 100%;
@@ -102,30 +106,30 @@
   .coin {
     /* Use the flex layout to rearrange the elements in the coin element */
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
   }
-
   .coin_heading {
     /* Increase the font size and line height for better readability on mobile devices */
     font-size: 18px;
     line-height: 1.5;
+    margin-left: 40%;
+  }
+
+  .coin_img {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-left: 10%;
+    margin-top: 8%;
+    width: 40px;
+    height: 40px;
   }
 
   .coin_data {
     /* Use the flex layout to rearrange the elements in the coin_data element */
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
   }
-
-  .coin_price,
-  .coin_volume,
-  .coin_marketcap,
-  .coin_percent {
-    /* Increase the font size and line height for better readability on mobile devices */
-    font-size: 14px;
-    line-height: 1.5;
-  }
 }
-
