@@ -1,21 +1,30 @@
-# Hello World example
+# Crypto Tracker
 
-This example shows the most basic idea behind Next. We have 2 pages: `pages/index.js` and `pages/about.js`. The former responds to `/` requests and the latter to `/about`. Using `next/link` you can add hyperlinks between them with universal routing capabilities. The `day` directory shows that you can have subdirectories.
+This is a web app that allows users to track the prices of various cryptocurrencies. It is built using [Next.js](https://nextjs.org/) and uses the [CoinGecko API](https://www.coingecko.com/api/docs/v3) to retrieve cryptocurrency data.
 
-## Deploy your own
+https://crypto-tracker-nicktill.vercel.app/
 
-Deploy the example using [Vercel](https://vercel.com):
+## Running locally
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/vercel/next.js/tree/canary/examples/hello-world)
+To get started with the app, clone the repo and then install the dependencies:
 
-## How to use
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+$ git clone https://github.com/nicktill/crypto-tracker.git
+$ cd crypto-tracker
+$ yarn
 
-```bash
-npx create-next-app --example hello-world hello-world-app
-# or
-yarn create next-app --example hello-world hello-world-app
-```
+$ yarn dev
+The app will be available at http://localhost:3000.
 
-Deploy it to the cloud with [Vercel](https://vercel.com/import?filter=next.js&utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+## Features
+Display the prices of multiple cryptocurrencies
+Sort cryptocurrencies by name, price, or market capitalization
+Filter cryptocurrencies by type (e.g. Bitcoin, Ethereum, Litecoin)
+View historical data for each cryptocurrency 
+
+## Future Plans
+Add charting features for the platform to display 1h, 1d, 1w, 1m, 1y, 5y
+Allow users to select the currency (e.g. USD, EUR, JPY) in which they want to view prices
+Add the ability to track the user's portfolio and calculate total value in real-time
+Implement alerts for when the price of a cryptocurrency reaches a certain threshold
+
