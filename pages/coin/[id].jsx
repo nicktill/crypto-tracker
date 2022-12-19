@@ -5,13 +5,12 @@ export const getServerSideProps = async (context) => {
   const { id } = context.query;
 
   const res = await fetch(`https://api.coingecko.com/api/v3/coins/${id}`);
-
   const data = await res.json();
 
   return {
     props: {
-      coin: data
-    }
+      coin: data,
+    },
   };
 };
 
