@@ -12,10 +12,7 @@ To get started with the app locally clone the repo and then install the dependen
 git clone https://github.com/nicktill/crypto-tracker.git
 cd crypto-tracker
 yarn
-```
-
-```
-yarn dev<br>
+yarn dev
 ```
 The app will be available at http://localhost:3000.<br>
 
