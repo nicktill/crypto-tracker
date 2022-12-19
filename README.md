@@ -6,7 +6,7 @@ https://crypto-tracker-nicktill.vercel.app/
 
 ## Running locally
 
-To get started with the app, clone the repo and then install the dependencies:
+To get started with the app locally clone the repo and then install the dependencies:
 
 
 $ git clone https://github.com/nicktill/crypto-tracker.git
@@ -15,6 +15,8 @@ $ yarn
 
 $ yarn dev
 The app will be available at http://localhost:3000.
+
+**Note** this is only needed to be done if you want to run locally, otherwise visit this URL: https://crypto-tracker-nicktill.vercel.app/
 
 ## Features
 Display the prices of multiple cryptocurrencies
