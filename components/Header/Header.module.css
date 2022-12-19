@@ -1,0 +1,95 @@
+.filterMenu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.filterMenuLabel {
+  padding: 1rem;
+}
+
+.filterMenuSelect {
+  font-size: 0.875rem;
+  color: #ffffff;
+  height: 1.8rem;
+  border-radius: 0.6rem;
+  background-color: rgb(48, 48, 48);
+  border-color: rgb(122, 122, 122);
+}
+
+.filterMenuSelect:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+@media screen and (max-width: 768px) {
+  .coin_app {
+    align-content: center;
+    margin-left: 4.5rem;
+  }
+}
+
+.coinCard {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding: 20px 10px;
+  flex-direction: row;
+}
+
+.coinCardLeft {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.coinCardRight {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.coinCardText {
+  margin-left: 20px;
+}
+
+.coinCardPrice,
+.coinCardMarketCap,
+.coinCardChange {
+  text-align: right;
+}
+
+.coinGroupLabels {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 15px;
+}
+
+.coinGroupLabel {
+  font-size: 1rem;
+  font-weight: bold;
+  padding-right: 100px;
+  display: flex;
+}
+
+.coinGroupInner {
+  font-size: 1rem;
+  font-weight: 40;
+  padding-left: 40px;
+  padding-right: 50px;
+  display: flex;
+  flex-direction: row;
+  margin-left: 25px;
+  margin-right: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .coinGroupLabel {
+    display: None;
+  }
+}

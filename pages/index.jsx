@@ -3,6 +3,7 @@ import SearchBar from "../components/SearchBar";
 import CoinList from "../components/CoinList";
 import Layout from "../components/Layout";
 import styles from "./Home.module.css";
+import Header from "../components/Header";
 
 export default function Home() {
   const [coins, setCoins] = useState([]);
@@ -86,16 +87,7 @@ export default function Home() {
         <h1 className="p-0 ">Crypto Tracker</h1>
         <SearchBar type="text" placeholder="Search" onChange={handleChange} />
         <FilterMenu />
-        <div className={styles.coinGroupLabels}>
-          <div className={styles.coinGroupInner}>
-            <div className={styles.coinGroupLabel}>Currency</div>
-            <div className={styles.coinGroupLabel}></div>
-            <div className={styles.coinGroupLabel}>Price</div>
-          </div>
-          <div className={styles.coinGroupLabel}>Volume</div>
-          <div className={styles.coinGroupLabel}>Change</div>
-          <div className={styles.coinGroupLabel}>Market Cap</div>
-        </div>
+        <Header />
         <CoinList coins={sortedCoins} />
       </div>
     </Layout>
