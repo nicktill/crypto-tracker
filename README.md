@@ -1,4 +1,4 @@
-# Crypto Tracker
+# WIP: Crypto Tracker 
 
 This is a web app that allows users to track the prices of various cryptocurrencies. It is built using [Next.js](https://nextjs.org/) and uses the [CoinGecko API](https://www.coingecko.com/api/docs/v3) to retrieve cryptocurrency data.
 
