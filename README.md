@@ -8,12 +8,15 @@ https://crypto-tracker-nicktill.vercel.app/
 
 To get started with the app locally clone the repo and then install the dependencies:
 
+```
+git clone https://github.com/nicktill/crypto-tracker.git
+cd crypto-tracker
+yarn
+```
 
-$ git clone https://github.com/nicktill/crypto-tracker.git<br>
-$ cd crypto-tracker<br>
-$ yarn<br>
-
-$ yarn dev<br>
+```
+yarn dev<br>
+```
 The app will be available at http://localhost:3000.<br>
 
 **Note** this is only needed to be done if you want to run locally, otherwise visit this URL: [crypto-tracker](https://crypto-tracker-nicktill.vercel.app/)
