@@ -84,7 +84,7 @@ export default function Home() {
   return (
     <Layout>
       <div className={styles.coin_app}>
-        <h1 className="p-0 ">Crypto Tracker</h1>
+        <h1 className="p-0 ">Crypto Dashboard</h1>
         <SearchBar type="text" placeholder="Search" onChange={handleChange} />
         <FilterMenu />
         <Header />
