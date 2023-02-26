@@ -1,5 +1,8 @@
 # WIP: Crypto Tracker 
 
+<img width="1070" alt="Screen Shot 2023-02-26 at 12 56 04 AM" src="https://user-images.githubusercontent.com/57879193/221394799-b2e6dc88-2914-4cc2-854d-e2d66affa232.png">
+
+
 This is a web app that allows users to track the prices of various cryptocurrencies. It is built using [Next.js](https://nextjs.org/) and uses the [CoinGecko API](https://www.coingecko.com/api/docs/v3) to retrieve cryptocurrency data.
 
 Deployed App => https://crypto-tracker-nicktill.vercel.app/
