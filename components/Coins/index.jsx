@@ -1,5 +1,6 @@
 import styles from "./Coins.module.css";
 import Link from "next/link";
+import "animate.css";
 
 function formatNumber(number) {
   if (number >= 1000000000) {
@@ -33,10 +34,12 @@ const Coins = ({
   id,
 }) => {
   return (
-    <div className={styles.coin_section}>
+    <div className={`${styles.coin_section} animate__animated animate__fadeIn`}>
       <Link href={`/coin/${id}`}>
         <a className={styles.coin_link}>
-          <div className={styles.coin_container}>
+          <div
+            className={`${styles.coin_container}  animate__animated animate__fadeIn`}
+          >
             <div className={styles.coin_row}>
               <div className={styles.coin}>
                 <img className={styles.coin_img} src={image} alt={name} />

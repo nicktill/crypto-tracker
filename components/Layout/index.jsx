@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "./Layout.module.css";
 
-const Layout = ({ children, title = "crypto-tracker" }) => {
+const Layout = ({ children, title = "Crypto Dashboard" }) => {
   return (
     <div className={styles.layout}>
       <Head>
