@@ -17,7 +17,7 @@ export default function Home() {
         <label htmlFor="filter" className={styles.filterMenuLabel}></label>
         <select
           id="filter"
-          className={`${styles.filterMenuSelect} animate__animated animate__fadeInLeft`}
+          className={styles.filterMenuSelect}
           onChange={handleFilterChange}
           value={filter}
         >
@@ -31,7 +31,7 @@ export default function Home() {
         <label htmlFor="order" className={styles.filterMenuLabel}></label>
         <select
           id="order"
-          className={`${styles.filterMenuSelect} animate__animated animate_fadeInRight`}
+          className={styles.filterMenuSelect}
           onChange={handleOrderChange}
           value={order}
         >
