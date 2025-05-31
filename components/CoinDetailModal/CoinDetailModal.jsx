@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { formatPrice, formatMarketCap, formatVolume } from "../../utils/formatters";
+import DetailedChart from "../DetailedChart/DetailedChart";
 
 const CoinDetailModal = ({ coin, isOpen, onClose }) => {
   if (!coin) return null;
@@ -22,7 +23,7 @@ const CoinDetailModal = ({ coin, isOpen, onClose }) => {
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ type: "spring", duration: 0.5 }}
           >
-            <div className="glass rounded-3xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar">
+            <div className="glass rounded-3xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar">
               <div className="flex justify-between items-start mb-6">
                 <div className="flex items-center space-x-4">
                   <img 
@@ -90,6 +91,14 @@ const CoinDetailModal = ({ coin, isOpen, onClose }) => {
                       </p>
                     </div>
                   </div>
+                </div>
+                
+                {/* Price Chart Section */}
+                <div className="mt-8">
+                  <DetailedChart 
+                    coinId={coin.id}
+                    isPositive={(coin.price_change_percentage_24h || 0) > 0}
+                  />
                 </div>
                 
                 <div className="pt-6 border-t border-slate-700">

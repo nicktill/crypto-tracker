@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Layout from "../components/Layout";
-import SearchBar from "../components/SearchBar";
-import CoinList from "../components/CoinList";
-import FilterControls from "../components/FilterControls";
-import StatsSection from "../components/StatsSections";
-import PortfolioSection from "../components/PortfolioSection";
-import WatchlistSection from "../components/WatchlistSection";
-import CoinDetailModal from "../components/CoinDetailModal";
+import Layout from "../components/Layout/Layout";
+import SearchBar from "../components/SearchBar/SearchBar";
+import CoinList from "../components/CoinList/CoinList";
+import FilterControls from "../components/FilterControls/FilterControls";
+import StatsSection from "../components/StatsSections/StatsSection";
+import PortfolioSection from "../components/PortfolioSection/PortfolioSection";
+import WatchlistSection from "../components/WatchListSection/WatchlistSection";
+import CoinDetailModal from "../components/CoinDetailModal/CoinDetailModal";
 
 export default function Home() {
   const [coins, setCoins] = useState([]);
@@ -24,7 +24,7 @@ export default function Home() {
       try {
         setLoading(true);
         const res = await fetch(
-          "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
+          "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true"
         );
         const data = await res.json();
         setCoins(data);

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { formatPrice, formatMarketCap, formatVolume } from "../../utils/formatters";
+import MiniChart from "../MiniChart/MiniChart";
 
 const CryptoCard = ({ coin, index, onClick }) => {
   const isPositive = coin.price_change_percentage_24h > 0;
@@ -34,6 +35,15 @@ const CryptoCard = ({ coin, index, onClick }) => {
             <h3 className="font-semibold text-lg text-white">{coin.name}</h3>
             <p className="text-slate-400 text-sm uppercase">{coin.symbol}</p>
           </div>
+        </div>
+        
+        {/* Mini Chart */}
+        <div className="hidden md:block w-24 h-12 mx-4">
+          <MiniChart 
+            data={coin.sparkline_in_7d?.price?.map((price, index) => ({ price, index })) || null}
+            isPositive={isPositive}
+            height={48}
+          />
         </div>
         
         <div className="text-right space-y-1">
