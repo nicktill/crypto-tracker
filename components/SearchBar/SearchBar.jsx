@@ -21,7 +21,6 @@ const SearchBar = ({ value, onChange, placeholder = "Search cryptocurrencies..."
     setShowSuggestions(false);
     inputRef.current?.blur();
   };
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (inputRef.current && !inputRef.current.parentNode.contains(event.target)) {
@@ -30,8 +29,23 @@ const SearchBar = ({ value, onChange, placeholder = "Search cryptocurrencies..."
       }
     };
 
+    const handleGlobalKeyDown = (event) => {
+      // Handle CMD+K / Ctrl+K to focus search
+      if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
+        event.preventDefault();
+        inputRef.current?.focus();
+        setIsFocused(true);
+        setShowSuggestions(true);
+      }
+    };
+
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleGlobalKeyDown);
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleGlobalKeyDown);
+    };
   }, []);
 
   return (

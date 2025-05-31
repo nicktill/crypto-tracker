@@ -1,20 +1,44 @@
 import { motion } from "framer-motion";
-import { TrendingUp, TrendingDown, DollarSign, BarChart3, Users, Zap, Globe, Activity } from "lucide-react";
+import { TrendingUp, TrendingDown, DollarSign, BarChart3, Users, Activity } from "lucide-react";
 
 const StatsSection = ({ coins }) => {
-  const totalMarketCap = coins.reduce((acc, coin) => acc + (coin.market_cap || 0), 0);
-  const totalVolume = coins.reduce((acc, coin) => acc + (coin.total_volume || 0), 0);
-  const gainers = coins.filter(coin => (coin.price_change_percentage_24h || 0) > 0);
-  const losers = coins.filter(coin => (coin.price_change_percentage_24h || 0) < 0);
+  // Calculate totals with proper validation
+  const totalMarketCap = coins.reduce((acc, coin) => {
+    const marketCap = coin.market_cap;
+    return acc + (marketCap && !isNaN(marketCap) ? marketCap : 0);
+  }, 0);
   
+  const totalVolume = coins.reduce((acc, coin) => {
+    const volume = coin.total_volume;
+    return acc + (volume && !isNaN(volume) ? volume : 0);
+  }, 0);
+  
+  // Calculate gainers and losers properly
+  const coinsWithValidChange = coins.filter(coin => 
+    coin.price_change_percentage_24h !== null && 
+    coin.price_change_percentage_24h !== undefined &&
+    !isNaN(coin.price_change_percentage_24h)
+  );
+  
+  const gainers = coinsWithValidChange.filter(coin => coin.price_change_percentage_24h > 0);
+  const losers = coinsWithValidChange.filter(coin => coin.price_change_percentage_24h < 0);
+  
+  // Format large numbers properly
+  const formatLargeNumber = (num) => {
+    if (num >= 1e12) return `$${(num / 1e12).toFixed(2)}T`;
+    if (num >= 1e9) return `$${(num / 1e9).toFixed(1)}B`;
+    if (num >= 1e6) return `$${(num / 1e6).toFixed(1)}M`;
+    return `$${num.toLocaleString()}`;
+  };
+
   const stats = [
     {
       title: "Cryptocurrencies",
       value: coins.length,
-      icon: Globe,
+      icon: Users,
       color: "from-blue-500 to-cyan-500",
       bgColor: "bg-blue-500/10 border-blue-500/20",
-      suffix: "",
+      formatter: (val) => val.toString(),
       description: "Active tokens tracked"
     },
     {
@@ -23,8 +47,7 @@ const StatsSection = ({ coins }) => {
       icon: DollarSign,
       color: "from-emerald-500 to-teal-500",
       bgColor: "bg-emerald-500/10 border-emerald-500/20",
-      suffix: "T",
-      formatter: (val) => `$${(val / 1e12).toFixed(2)}`,
+      formatter: formatLargeNumber,
       description: "Combined market value"
     },
     {
@@ -33,31 +56,19 @@ const StatsSection = ({ coins }) => {
       icon: BarChart3,
       color: "from-purple-500 to-pink-500",
       bgColor: "bg-purple-500/10 border-purple-500/20",
-      suffix: "B",
-      formatter: (val) => `$${(val / 1e9).toFixed(1)}`,
+      formatter: formatLargeNumber,
       description: "Trading volume today"
     },
     {
       title: "Market Sentiment",
-      value: ((gainers.length / coins.length) * 100),
+      value: coinsWithValidChange.length > 0 ? (gainers.length / coinsWithValidChange.length) * 100 : 0,
       icon: Activity,
       color: gainers.length > losers.length ? "from-emerald-500 to-green-500" : "from-red-500 to-orange-500",
       bgColor: gainers.length > losers.length ? "bg-emerald-500/10 border-emerald-500/20" : "bg-red-500/10 border-red-500/20",
-      suffix: "%",
       formatter: (val) => `${val.toFixed(0)}%`,
       description: "Coins gaining today"
     }
   ];
-
-  const formatValue = (stat) => {
-    if (stat.formatter) {
-      return stat.formatter(stat.value);
-    }
-    if (stat.value >= 1e12) return `${(stat.value / 1e12).toFixed(2)}T`;
-    if (stat.value >= 1e9) return `${(stat.value / 1e9).toFixed(1)}B`;
-    if (stat.value >= 1e6) return `${(stat.value / 1e6).toFixed(1)}M`;
-    return stat.value.toLocaleString();
-  };
 
   return (
     <motion.section 
@@ -99,11 +110,6 @@ const StatsSection = ({ coins }) => {
               transition: { duration: 0.2 }
             }}
           >
-            {/* Background pattern */}
-            <div className="absolute inset-0 opacity-5">
-              <div className="absolute inset-0 bg-gradient-to-br from-white via-transparent to-transparent"></div>
-            </div>
-
             {/* Icon */}
             <motion.div
               className="flex items-center justify-between mb-4"
@@ -158,7 +164,7 @@ const StatsSection = ({ coins }) => {
                 animate={{ scale: 1 }}
                 transition={{ type: "spring", stiffness: 200 }}
               >
-                {formatValue(stat)}
+                {stat.formatter(stat.value)}
               </motion.div>
             </motion.div>
 
@@ -171,14 +177,6 @@ const StatsSection = ({ coins }) => {
               <h3 className="font-semibold text-white mb-1">{stat.title}</h3>
               <p className="text-sm text-slate-400">{stat.description}</p>
             </motion.div>
-
-            {/* Hover effect overlay */}
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-white/5 via-white/10 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              style={{
-                maskImage: 'radial-gradient(circle at center, black 0%, transparent 70%)'
-              }}
-            />
 
             {/* Shimmer effect */}
             <div className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -193,25 +191,11 @@ const StatsSection = ({ coins }) => {
                 }}
               />
             </div>
-
-            {/* Pulse indicator */}
-            <motion.div
-              className={`absolute top-4 right-4 w-3 h-3 rounded-full bg-gradient-to-r ${stat.color}`}
-              animate={{ 
-                scale: [0.8, 1.2, 0.8],
-                opacity: [0.5, 1, 0.5]
-              }}
-              transition={{ 
-                duration: 2, 
-                repeat: Infinity,
-                delay: index * 0.3
-              }}
-            />
           </motion.div>
         ))}
       </div>
 
-      {/* Additional Market Insights */}
+      {/* Detailed Market Insights */}
       <motion.div
         className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6"
         initial={{ opacity: 0, y: 20 }}
@@ -225,6 +209,9 @@ const StatsSection = ({ coins }) => {
           </div>
           <p className="text-2xl font-bold text-white">{gainers.length}</p>
           <p className="text-sm text-slate-400">Cryptocurrencies up 24h</p>
+          <div className="mt-2 text-xs text-emerald-400">
+            {gainers.length > 0 && `Best: +${Math.max(...gainers.map(c => c.price_change_percentage_24h)).toFixed(2)}%`}
+          </div>
         </div>
 
         <div className="bg-red-500/10 border border-red-500/20 rounded-2xl p-6 backdrop-blur-xl">
@@ -234,6 +221,9 @@ const StatsSection = ({ coins }) => {
           </div>
           <p className="text-2xl font-bold text-white">{losers.length}</p>
           <p className="text-sm text-slate-400">Cryptocurrencies down 24h</p>
+          <div className="mt-2 text-xs text-red-400">
+            {losers.length > 0 && `Worst: ${Math.min(...losers.map(c => c.price_change_percentage_24h)).toFixed(2)}%`}
+          </div>
         </div>
       </motion.div>
     </motion.section>
