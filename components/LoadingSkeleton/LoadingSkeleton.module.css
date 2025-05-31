@@ -1,0 +1,44 @@
+.skeletonContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+  width: 100%;
+}
+
+.skeletonCard {
+  background: #1a1a1a;
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  height: 100px;
+}
+
+.skeletonImage {
+  width: 60px;
+  height: 60px;
+  background: #2a2a2a;
+  border-radius: 50%;
+}
+
+.skeletonContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.skeletonTitle {
+  height: 20px;
+  background: #2a2a2a;
+  border-radius: 4px;
+  width: 60%;
+}
+
+.skeletonPrice {
+  height: 16px;
+  background: #2a2a2a;
+  border-radius: 4px;
+  width: 40%;
+}

@@ -1,4 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 * {
   margin: 0;
@@ -6,15 +9,16 @@
   box-sizing: border-box;
   text-decoration: none;
   list-style: none;
-  font-family: "Nunito", sans-serif;
 }
 
 html {
-  font-family: sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 body {
-  background-color: #101012;
+  background-color: #0f172a;
+  color: #ffffff;
+  overflow-x: hidden;
 }
 
 a {
@@ -22,6 +26,179 @@ a {
   text-decoration: none;
 }
 
-h1 {
-  margin: 25px;
+/* Glassmorphism Effects */
+.glass {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.glass-hover:hover {
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(148, 163, 184, 0.2);
+}
+
+/* Gradient Effects */
+.gradient-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-border {
+  position: relative;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 12px;
+  padding: 1px;
+}
+
+.gradient-border > div {
+  background: rgb(15, 23, 42);
+  border-radius: 11px;
+  height: 100%;
+}
+
+/* Animations */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 10px rgba(102, 126, 234, 0.5); }
+  to { box-shadow: 0 0 30px rgba(102, 126, 234, 0.8); }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+/* Hover Effects */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+}
+
+/* Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.4);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(102, 126, 234, 0.6);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(102, 126, 234, 0.8);
+}
+
+/* Background Patterns */
+.bg-grid {
+  background-image: 
+    linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Status Colors */
+.status-positive { color: #10b981; }
+.status-negative { color: #ef4444; }
+.bg-positive { background-color: rgba(16, 185, 129, 0.1); }
+.bg-negative { background-color: rgba(239, 68, 68, 0.1); }
+
+/* Loading Animation */
+.loading-skeleton {
+  background: linear-gradient(90deg, 
+    rgba(148, 163, 184, 0.1) 25%, 
+    rgba(148, 163, 184, 0.3) 50%, 
+    rgba(148, 163, 184, 0.1) 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Magic UI inspired animations */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: translateX(-100%);
+  animation: shimmer 1.5s infinite;
+}
+
+/* Utility classes */
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.backdrop-blur-strong {
+  backdrop-filter: blur(20px);
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .gradient-text {
+    font-size: 2.5rem;
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
 }
