@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import CryptoCard from "../CryptoCard";
-import LoadingSkeleton from "../LoadingSkeleton";
+import CryptoCard from "../CryptoCard/CryptoCard";
+import LoadingSkeleton from "../LoadingSkeleton/LoadingSkeleton";
 
 const CoinList = ({ coins, loading, onCoinClick }) => {
   if (loading) {
