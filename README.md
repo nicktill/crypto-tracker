@@ -1,7 +1,19 @@
 # WIP: Crypto Tracker 
 
-<img width="1070" alt="Screen Shot 2023-02-26 at 12 56 04 AM" src="https://user-images.githubusercontent.com/57879193/221394799-b2e6dc88-2914-4cc2-854d-e2d66affa232.png">
+## Landing Page
+<img width="1724" alt="Screenshot 2025-05-31 at 1 54 42 AM" src="https://github.com/user-attachments/assets/1acc5f21-6d88-4951-904d-2d02126e6682" />
 
+## CoinList
+<img width="1343" alt="Screenshot 2025-05-31 at 1 55 07 AM" src="https://github.com/user-attachments/assets/72253e3c-ecf2-4614-96fa-a4215472164a" />
+
+## Stats Section
+<img width="1320" alt="Screenshot 2025-05-31 at 1 55 38 AM" src="https://github.com/user-attachments/assets/91d9da19-9091-4a4f-b4bc-cb5429985c41" />
+
+## Portfolio Section 
+<img width="1065" alt="Screenshot 2025-05-31 at 1 56 03 AM" src="https://github.com/user-attachments/assets/75674530-d36f-4de2-b5e5-fff819829ec3" />
+
+## Watchlist
+<img width="1049" alt="Screenshot 2025-05-31 at 1 56 14 AM" src="https://github.com/user-attachments/assets/9907565e-db32-40d8-ade9-b248bfba5b30" />
 
 This is a web app that allows users to track the prices of various cryptocurrencies. It is built using [Next.js](https://nextjs.org/) and uses the [CoinGecko API](https://www.coingecko.com/api/docs/v3) to retrieve cryptocurrency data.
 
