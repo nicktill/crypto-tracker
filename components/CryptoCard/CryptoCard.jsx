@@ -1,82 +1,67 @@
 import { motion } from "framer-motion";
-import { formatPrice, formatMarketCap, formatVolume } from "../../utils/formatters";
-import MiniChart from "../MiniChart/MiniChart";
+import { formatPrice, formatMarketCap } from "../../utils/formatters";
 
 const CryptoCard = ({ coin, index, onClick }) => {
   const isPositive = coin.price_change_percentage_24h > 0;
   
   return (
     <motion.div
-      className="glass glass-hover rounded-2xl p-6 cursor-pointer card-hover"
+      className="group cursor-pointer"
       onClick={() => onClick(coin)}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
+      transition={{ duration: 0.4, delay: index * 0.05 }}
+      whileHover={{ y: -6 }}
     >
-      <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-4 flex-1">
-          <div className="flex items-center space-x-3">
-            <span className="text-slate-400 font-medium text-sm w-8">
-              #{coin.market_cap_rank}
-            </span>
+      <div className="bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] rounded-3xl p-8 transition-all duration-300 hover:bg-white/[0.06] hover:border-white/[0.15] hover:shadow-2xl hover:shadow-blue-500/[0.05]">
+        
+        {/* Top Row - Icon + Rank */}
+        <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center space-x-4">
             <img 
               src={coin.image} 
               alt={coin.name}
-              className="w-10 h-10 rounded-full"
+              className="w-14 h-14 rounded-full"
               onError={(e) => {
-                e.target.src = '/placeholder-coin.png'; // Add a placeholder image
+                e.target.src = '/placeholder-coin.png';
               }}
             />
-          </div>
-          
-          <div className="flex-1">
-            <h3 className="font-semibold text-lg text-white">{coin.name}</h3>
-            <p className="text-slate-400 text-sm uppercase">{coin.symbol}</p>
-          </div>
-        </div>
-        
-        {/* Mini Chart */}
-        <div className="hidden md:block w-24 h-12 mx-4">
-          <MiniChart 
-            data={coin.sparkline_in_7d?.price?.map((price, index) => ({ price, index })) || null}
-            isPositive={isPositive}
-            height={48}
-          />
-        </div>
-        
-        <div className="text-right space-y-1">
-          <p className="font-bold text-xl text-white">
-            {formatPrice(coin.current_price)}
-          </p>
-          <div className="flex items-center space-x-2">
-            <div className={`flex items-center space-x-1 px-2 py-1 rounded-lg ${
-              isPositive ? 'bg-positive status-positive' : 'bg-negative status-negative'
-            }`}>
-              <svg 
-                className={`h-3 w-3 ${isPositive ? 'rotate-0' : 'rotate-180'}`} 
-                fill="currentColor" 
-                viewBox="0 0 20 20"
-              >
-                <path fillRule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z" clipRule="evenodd" />
-              </svg>
-              <span className="text-xs font-medium">
-                {Math.abs(coin.price_change_percentage_24h || 0).toFixed(2)}%
-              </span>
+            <div>
+              <h3 className="text-xl font-bold text-white mb-1">
+                {coin.name}
+              </h3>
+              <p className="text-slate-400 text-sm font-medium uppercase tracking-widest">
+                {coin.symbol}
+              </p>
             </div>
           </div>
+          
+          <div className="text-slate-500 text-sm font-medium">
+            #{coin.market_cap_rank}
+          </div>
         </div>
-      </div>
-      
-      <div className="mt-4 pt-4 border-t border-slate-700 flex justify-between text-sm">
-        <div>
-          <p className="text-slate-400">Market Cap</p>
-          <p className="text-white font-medium">{formatMarketCap(coin.market_cap)}</p>
+
+        {/* Price */}
+        <div className="mb-8">
+          <p className="text-4xl font-bold text-white mb-4">
+            {formatPrice(coin.current_price)}
+          </p>
+          
+          <div className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold ${
+            isPositive 
+              ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' 
+              : 'bg-red-500/10 text-red-400 border border-red-500/20'
+          }`}>
+            {isPositive ? '↗' : '↘'} {Math.abs(coin.price_change_percentage_24h || 0).toFixed(2)}%
+          </div>
         </div>
-        <div className="text-right">
-          <p className="text-slate-400">Volume 24h</p>
-          <p className="text-white font-medium">{formatVolume(coin.total_volume)}</p>
+
+        {/* Market Cap */}
+        <div className="pt-6 border-t border-white/[0.05]">
+          <p className="text-slate-400 text-sm font-medium mb-2">Market Cap</p>
+          <p className="text-white text-xl font-bold">
+            {formatMarketCap(coin.market_cap)}
+          </p>
         </div>
       </div>
     </motion.div>

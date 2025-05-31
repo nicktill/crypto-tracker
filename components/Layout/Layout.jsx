@@ -11,50 +11,65 @@ const Layout = ({ children, title = "Crypto Tracker - Modern Dashboard" }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      {/* Animated Background */}
+      {/* Much More Subtle Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        {/* Floating orbs */}
+        {/* Very subtle floating shapes - much smaller and more transparent */}
         <motion.div 
-          className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full opacity-20 blur-3xl"
+          className="absolute -top-32 -right-32 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"
           animate={{ 
             y: [0, -20, 0],
             x: [0, 10, 0],
           }}
           transition={{
-            duration: 6,
+            duration: 20,
             repeat: Infinity,
             ease: "easeInOut"
           }}
         />
+        
         <motion.div 
-          className="absolute top-40 -left-40 w-80 h-80 bg-blue-500 rounded-full opacity-20 blur-3xl"
+          className="absolute top-32 -left-32 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"
           animate={{ 
             y: [0, 20, 0],
             x: [0, -10, 0],
           }}
           transition={{
-            duration: 8,
+            duration: 25,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 2
+            delay: 5
           }}
         />
-        <motion.div 
-          className="absolute -bottom-40 right-20 w-60 h-60 bg-indigo-500 rounded-full opacity-15 blur-3xl"
-          animate={{ 
-            y: [0, -15, 0],
-            x: [0, 5, 0],
+
+        {/* Very subtle grid pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div
+            className="w-full h-full"
+            style={{
+              backgroundImage: `
+                linear-gradient(rgba(148, 163, 184, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(148, 163, 184, 0.02) 1px, transparent 1px)
+              `,
+              backgroundSize: '60px 60px'
+            }}
+          />
+        </div>
+
+        {/* Single crypto symbol - very subtle */}
+        <motion.div
+          className="absolute top-1/3 right-1/4 text-6xl font-bold text-white/3 select-none pointer-events-none"
+          animate={{
+            y: [0, -20, 0],
+            opacity: [0.03, 0.01, 0.03],
           }}
           transition={{
-            duration: 7,
+            duration: 30,
             repeat: Infinity,
-            ease: "easeInOut",
-            delay: 4
+            ease: "easeInOut"
           }}
-        />
-        
-        {/* Grid pattern */}
-        <div className="absolute inset-0 bg-grid opacity-30"></div>
+        >
+          ₿
+        </motion.div>
       </div>
 
       {/* Navigation */}
